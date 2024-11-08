@@ -1,61 +1,26 @@
-import 'package:args/args.dart';
+import 'dart:io';
 
-const String version = '0.0.1';
-
-ArgParser buildParser() {
-  return ArgParser()
-    ..addFlag(
-      'help',
-      abbr: 'h',
-      negatable: false,
-      help: 'Print this usage information.',
-    )
-    ..addFlag(
-      'verbose'k,
-      abbr: 'v',
-      negatable: false,
-      help: 'Show additional command output.',
-    )
-    ..addFlag(
-      'version',
-      negatable: false,
-      help: 'Print the tool version.',
-    );
-}
-
-void printUsage(ArgParser argParser) {
-  print('Usage: dart names_of_the_prophets.dart <flags> [arguments]');
-  print(argParser.usage);
-}
-
-void main(List<String> arguments) {
-  final ArgParser argParser = buildParser();
-  try {
-    final ArgResults results = argParser.parse(arguments);
-    bool verbose = false;
-
-    // Process the parsed arguments.
-    if (results.wasParsed('help')) {
-      printUsage(argParser);
-      return;
-    }
-    if (results.wasParsed('version')) {
-      print('names_of_the_prophets version: $version');
-      return;
-    }
-    if (results.wasParsed('verbose')) {
-      verbose = true;
-    }
-
-    // Act on the arguments provided.
-    print('Positional arguments: ${results.rest}');
-    if (verbose) {
-      print('[VERBOSE] All arguments: ${results.arguments}');
-    }
-  } on FormatException catch (e) {
-    // Print usage information if an invalid argument was provided.
-    print(e.message);
-    print('');
-    printUsage(argParser);
-  }
+void main() {
+  print("ادخل اسم 1");
+  String name1, name2, name3;
+  name1 = stdin.readLineSync()!;
+  print("ادخل اسم2");
+  name2 = stdin.readLineSync()!;
+  print("ادخل اسم 3");
+  name3 = stdin.readLineSync()!;
+  print('ادخل تاريخ ميلاد الشخص ١');
+  int birthday1, birthday2, birthday3;
+  String birthdayString = stdin.readLineSync()!;
+  birthday1 = int.tryParse(birthdayString) ?? 0;
+  print('ادخل تاريخ ميلاد الشخص 2');
+  birthday2 = int.tryParse(birthdayString) ?? 0;
+  birthday3 = int.tryParse(birthdayString) ?? 0;
+  print('ادخل تاريخ وفاة 1 ');
+  int death1, death2, death3;
+  String deathString = stdin.readLineSync()!;
+  death1 = int.tryParse(deathString) ?? 0;
+  print('ادخل تاريخ وفاة 2 ');
+  death2 = int.tryParse(deathString) ?? 0;
+  death3 = int.tryParse(deathString) ?? 0;
+  print('ادخل تاريخ وفاة 3 ');
 }
